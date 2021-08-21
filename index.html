@@ -6,21 +6,70 @@
     <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    Library
+    <div id="add_books">   
+      <h1 id="userLib"></h1>
 
-    Title<input field="text" id="title">
-    Author<input field="text" id="author">
-    Pages<input field="text" id="pages">
-    Read<input type="radio" name="read" class="read" value="Read">Yes<input type="radio" name="read" value="Not read">No
-    <button id="add_book">Add Book</button>
-    <i class="fa-solid fa-trash-can"></i>
+      Title<input field="text" id="title">
+      Author Last<input field="text" id="author-last">
+      Author First<input field="text" id="author-first">
+      Pages<input field="text" id="pages">
+      <select name="genres" id="genre">
+        <option>Genre</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="sci_fi">Sci-Fi</option>
+        <option value="mystery">Mystery</option>
+        <option value="romance">Romance</option>
+        <option value="thriller">Thriller</option>
+        <option value="dystopian">Dystopian</option>
+        <option value="contemporary">Biography</option>
+        <option value="contemporary">Nonfiction</option>
+        <option value="other">Other</option>
+      </select>
+      Read<input type="radio" name="read" value="Read" checked>Yes<input type="radio" name="read" value="Not read">No
+      <button id="add_book">Add Book</button>
+    </div>
 
-    <table id="library">
+
+    <table id="library" class="sortable">
       <tr>
        
       </tr>
     </table>
-    
+
+    <div id="edit-window" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1 id="userLib"></h1>
+
+        Title <input field="text" id="edit_title">
+        <p></p>
+        Author Last <input field="text" id="edit_author-last">
+        <p></p>
+        Author First <input field="text" id="edit_author-first">
+        <p></p>
+        Pages <input field="text" id="edit_pages">
+        <p></p>
+        <select name="genres" id="edit_genre">
+          <option>Genre</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="sci_fi">Sci-Fi</option>
+          <option value="mystery">Mystery</option>
+          <option value="romance">Romance</option>
+          <option value="thriller">Thriller</option>
+          <option value="dystopian">Dystopian</option>
+          <option value="contemporary">Biography</option>
+          <option value="contemporary">Nonfiction</option>
+          <option value="other">Other</option>
+        </select>
+        <p></p>
+        Read<input type="radio" name="edit_read" value="Read">Yes<input type="radio" name="edit_read" value="Not read">No
+        <p></p>
+        <button class="edit-entry">Edit Entry</button>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
