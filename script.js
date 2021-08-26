@@ -1,12 +1,10 @@
 // to-do list
 
-// edit button on each card that allows you to  chnage
-// all things
-
-// add genre and date added onto each card
-
-// add a way to organize by genre, by read/not-read
-// by date added by author, by title or author alphabetically
+// things to fix:
+// 1. have it delete the row if it moves up a row
+// 2. fix the tdCounter so that it is always correct
+//    for the card's position
+// 3. look into local storage for library
 
 let myLibrary = [];
 let libTable = document.querySelector('#library'); 
@@ -79,6 +77,7 @@ function displayBook(cardID) {
       tdCounter = 0;
       
     }
+
     updateBookCounter();
     updateReadCounter();
     libTable.appendChild(card);
@@ -91,6 +90,7 @@ addBtn.addEventListener('click', function() {
   let nextBook = NewBookInfo('', '');
   let newItem = new Book(nextBook.title, nextBook.authorLast, nextBook.authorFirst, nextBook.pages, nextBook.read, nextBook.genre, nextBook.time, nextBook.randBookID);
   newItem.addToLibrary();
+  
   displayBook('');
 });
 
@@ -151,13 +151,10 @@ function editCard(event) {
   }
 
   cardIndex = getCardIndex(currentCard);
-  console.log(cardIndex);
 
   // get new values of card to populate input fields of edit_ elements
   libLoopArr = ['title','authorLast','authorFirst','pages'];
   for (let i = 0; i < libLoopArr.length; i++) {
-    console.log(`edit_${libLoopArr[i]}`);
-    console.log(myLibrary[cardIndex][libLoopArr[i]]);
     document.getElementById(`edit_${libLoopArr[i]}`).value = myLibrary[cardIndex][libLoopArr[i]];
   }
   let edit_read = myLibrary[cardIndex]['read'];
@@ -206,13 +203,29 @@ function editEntry(event, cardID, cardIndex, editWindow) {
 function deleteCard(event) {
   let delBtn = event.target.closest('.delete');
   let currentCard = event.target.closest('td');
+  let currentRow = event.target.closest('tr');
   if (!delBtn) return;
 
-  updateReadCounter();
-  updateBookCounter();
+
+  
+  if (myLibrary.length == 0) {
+    tdCounter = -1;
+  }
+ 
+  if (tdCounter <= 3 && tdCounter > 1) {
+    tdCounter -= 1;
+  }
+  else {
+    tdCounter = 3;
+    libTable.removeChild(currentRow);
+  }
+
+
   cardID = currentCard.getAttribute('id');
   myCard = getCardIndex(currentCard);
   myLibrary.splice(myCard, 1);
+  updateReadCounter();
+  updateBookCounter();
   libTable.removeChild(currentCard);
 }
 
@@ -269,30 +282,13 @@ const getReadItems = (item) => {
   return {readIcon, readClass, readName};
 }
 
-// allow user to drag and drop cards (functionality removed)
-// $( function() {
-//   $( ".sortable" ).sortable({
-//     revert: true
-//   });
-//   $( ".draggable" ).draggable({
-//     connectToSortable: ".sortable",
-//     helper: "clone",
-//     revert: "invalid"
-//   });
-//   $( 'td' ).disableSelection();
-// } );
-
 
 // get numbers for total books and total books read and display
-
-
-
 
 const getBooksRead = () => {
   for (let i = 0; i < myLibrary.length; i++) {
     if (myLibrary[i]['read'] == 'Read') {
       readCounter += 1;
-      console.log(readCounter);
     }
   }
   return readCounter;
@@ -306,7 +302,6 @@ function updateReadCounter() {
 
 function updateBookCounter() {
   bookCounter = myLibrary.length;
-  console.log(myLibrary);
   totalBooks.innerHTML = `Total books: ${bookCounter}`;
 }
 
