@@ -115,3 +115,51 @@ td:hover{
   transform: scale(1.0);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
+
+
+.container {
+  margin: 15px;
+}
+
+#add_books {
+  margin: -22px 0px 0px -23px;
+  padding: 15px;
+  background: rgb(51, 51, 92);
+  color: white;
+  width: 250px;
+  height: 100%;
+  position: fixed;
+}
+
+#show_library {
+  background: rgb(253, 220, 130);
+  width: 1000px;
+  margin: -50px -200px -200px 255px;
+  border-right: 5px groove black;
+  border-bottom: 5px groove black;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+
+
+}
+
+.total-books, .books-read {
+  border: 1px solid white;
+  margin: 4px;
+  padding: 5px;
+  
+}
+/* {
+  border: 1px solid white;
+  margin: 4px;
+  padding: 5px;
+  
+} */

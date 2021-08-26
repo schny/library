@@ -6,36 +6,52 @@
     <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div id="add_books">   
-      <h1 id="userLib"></h1>
+    <div class="container">
+      <div class="row">
+        <div id="add_books" class="column">   
+          <h1 id="userLib"></h1>
+          <span class="total-books">
+          </span>
 
-      Title<input field="text" id="title">
-      Author Last<input field="text" id="author-last">
-      Author First<input field="text" id="author-first">
-      Pages<input field="text" id="pages">
-      <select name="genres" id="genre">
-        <option>Genre</option>
-        <option value="fantasy">Fantasy</option>
-        <option value="sci_fi">Sci-Fi</option>
-        <option value="mystery">Mystery</option>
-        <option value="romance">Romance</option>
-        <option value="thriller">Thriller</option>
-        <option value="dystopian">Dystopian</option>
-        <option value="contemporary">Biography</option>
-        <option value="contemporary">Nonfiction</option>
-        <option value="other">Other</option>
-      </select>
-      Read<input type="radio" name="read" value="Read" checked>Yes<input type="radio" name="read" value="Not read">No
-      <button id="add_book">Add Book</button>
+          <span class="books-read">
+          </span>
+          <p></p>
+          Title <br><input field="text" id="title">
+          <p></p>
+          Author Last <input field="text" id="authorLast">
+          <p></p>
+          Author First <input field="text" id="authorFirst">
+          <p></p>
+          Pages <input field="text" id="pages">
+          <p></p>
+          Genre<br>
+          <select name="genres" id="genre">
+           
+            <option value="fantasy">Fantasy</option>
+            <option value="sci_fi">Sci-Fi</option>
+            <option value="mystery">Mystery</option>
+            <option value="romance">Romance</option>
+            <option value="thriller">Thriller</option>
+            <option value="dystopian">Dystopian</option>
+            <option value="contemporary">Biography</option>
+            <option value="contemporary">Nonfiction</option>
+            <option value="other">Other</option>
+          </select>
+          <p></p>
+          Read <input type="radio" name="read" value="Read" checked>Yes<input type="radio" name="read" value="Not read">No
+          <p></p>
+          <button id="add_book">Add Book</button>
+        </div>
+        <div class="column" id="show_library">
+          <table id="library" class="sortable">
+            <tr>
+          
+            </tr>
+          </table>
+        </div>
+     </div>
+    
     </div>
-
-
-    <table id="library" class="sortable">
-      <tr>
-       
-      </tr>
-    </table>
-
     <div id="edit-window" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -43,22 +59,22 @@
 
         Title <input field="text" id="edit_title">
         <p></p>
-        Author Last <input field="text" id="edit_author-last">
+        Author Last <input field="text" id="edit_authorLast">
         <p></p>
-        Author First <input field="text" id="edit_author-first">
+        Author First <input field="text" id="edit_authorFirst">
         <p></p>
         Pages <input field="text" id="edit_pages">
         <p></p>
+        Genre<br>
         <select name="genres" id="edit_genre">
-          <option>Genre</option>
           <option value="fantasy">Fantasy</option>
-          <option value="sci_fi">Sci-Fi</option>
+          <option value="sci-fi">Sci-Fi</option>
           <option value="mystery">Mystery</option>
           <option value="romance">Romance</option>
           <option value="thriller">Thriller</option>
           <option value="dystopian">Dystopian</option>
           <option value="contemporary">Biography</option>
-          <option value="contemporary">Nonfiction</option>
+          <option value="nonfiction">Nonfiction</option>
           <option value="other">Other</option>
         </select>
         <p></p>
